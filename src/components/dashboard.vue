@@ -6,7 +6,7 @@ const handlePass = () => {
   if(passcode.value === 'turndasix'){
     window.location.href = 'https://nine.company.site/'
   }else {
-
+      console.log('L')
   }
 }
 

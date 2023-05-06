@@ -2,8 +2,6 @@
 import { ref } from 'vue'
 import gsap from 'gsap'
 
-
-
 const passcode = ref('')
 const isWrongCode = ref(false)
 
@@ -33,17 +31,18 @@ const handlePass = () => {
 
 <template>
   <div class="h-screen">
-    <h3 class="font-extrabold	 text-xl ml-5 font-joystix">turndasix.</h3>
-    <div class="justify-center flex bg-black items-center h-screen">
+    <h3 class="font-extrabold	 text-xl ml-5">turndasix.</h3>
+    <div class="justify-center flex bg-black items-center h-screen overflow-hidden">
       <div class="img-wrapper flex flex-col justify-center items-center">
-        <div class="flex">
-          <img src="../assets/blackgif.gif" class="h-full w-full logo" />
-          <div>
-
+        <div class="">
+          <div class="ml-20 mb-10 lg:ml-24 leading-loose" v-if="isWrongCode">
+            <span class="text-red-700 text-4xl" >you not welcome</span>
           </div>
+          <img v-else src="../assets/blackgif.gif" class="h-full w-full logo" />
+          
         </div>
         <div class="flex flex-col justify-between w-full px-10">
-          <input v-model="passcode" type="text" placeholder="enter passcode"
+          <input v-model="passcode"  type="password" placeholder="enter passcode"
             class="w-full bg-black border-white border text-white mb-5 p-4 rounded" />
           <button @click="handlePass" class="text-white  border border-white p-2 cursor-pointer">
             enter

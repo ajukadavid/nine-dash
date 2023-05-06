@@ -2,3 +2,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@font-face {
+    font-family: 'joystix';
+    src: url('../assets/fonts/joystix.otf')
+}
+
+body {
+    font-family: joystix;
+}

@@ -2,7 +2,11 @@
 export default {
   content: [],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        joystix: ['joystix', 'monspace-regular']
+      }
+    },
   },
   plugins: [],
   content: [

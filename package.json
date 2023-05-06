@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "gsap": "^3.11.5",
+    "three": "0.134",
+    "troisjs": "^0.3.4",
     "vue": "^3.2.47",
     "vue-router": "4"
   },

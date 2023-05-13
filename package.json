@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.11.0",
+    "emailjs": "^4.0.1",
     "gsap": "^3.11.5",
     "three": "0.134",
     "troisjs": "^0.3.4",

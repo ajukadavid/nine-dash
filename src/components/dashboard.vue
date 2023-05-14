@@ -8,7 +8,7 @@ const isWrongCode = ref(false)
 
 const handlePass = () => {
   if (passcode.value === 'turndasix') {
-    window.location.href = 'https://nine.company.site/'
+    // window.location.href = 'https://nine.company.site/'
   } else {
     gsap.from(".logo", { 
       x: -60,
@@ -39,7 +39,7 @@ const handlePass = () => {
   <div class="h-screen">
     <div class="justify-center flex bg-black items-center h-screen overflow-hidden">
       <div class="img-wrapper flex flex-col justify-center items-center">
-        <div class="flex h-[350px] items-center justify-center">
+        <div class="flex h-fit w-fit items-center justify-center">
           <div class="mx-auto animate-bounce w-full" v-if="isWrongCode">
             <p class="text-red-700 text-6xl leading-loose" >keep off</p>
           </div>
@@ -47,7 +47,7 @@ const handlePass = () => {
         </div>
         <div class="flex flex-col items-center justify-center w-full px-10">
           <input v-model="passcode"  type="password" placeholder="enter passcode"
-            class="w-full bg-black border-red-400 border text-white mb-5 p-4 rounded" />
+            class="w-full h-full bg-black border-red-400 border text-white mb-5 p-4 rounded" />
           <button @click="handlePass" class="text-white text-2xl    p-2 cursor-pointer">
             JOIN
           </button>

@@ -40,7 +40,7 @@ const handlePass = () => {
     <div class="justify-center flex bg-black items-center h-screen overflow-hidden">
       <div class="img-wrapper flex flex-col justify-center items-center">
         <div class="flex h-fit w-fit items-center justify-center">
-          <div class="flex justify-center items-center animate-bounce w-full" v-if="isWrongCode">
+          <div class="flex justify-center items-center animate-bounce w-full bg-yellow-500" v-if="isWrongCode">
             <p class="text-blue-700 text-6xl lg:ml-0  leading-loose" >keep off</p>
           </div>
           <img v-else src="../assets/updated.gif" class="h-full w-full logo" />

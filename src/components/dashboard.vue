@@ -1,11 +1,47 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import gsap from 'gsap'
+import { collection, addDoc, getDocs } from "firebase/firestore"
+import db from '../composables/use-firebase'
+
 // import { sendEmail } from '../composables/email-service'
 
 const passcode = ref('')
+const email = ref('')
 const isWrongCode = ref(false)
+const isEmail = ref(false)
 
+const createItem = async () => {
+  const colRef = collection(db, 'users')
+      // data to send
+      const dataObj = {
+        email: email.value
+      }
+
+      // create document and return reference to it
+      const docRef = await addDoc(colRef, dataObj)
+
+      // access auto-generated ID with '.id'
+      console.log('Document was created with ID:', docRef.id)
+
+      const querySnapshot = await getDocs(collection(db, "users"));
+
+      querySnapshot.forEach((doc:any) => {
+
+      console.log(doc.data());
+})
+
+} 
+
+const handleRegisterClick = () => {
+  if(isEmail.value) {
+      if(!!email.value){
+        createItem()
+      }
+  } else {
+    isEmail.value = true
+  }
+}
 const handlePass = () => {
   if (passcode.value === 'turndasix') {
     // window.location.href = 'https://nine.company.site/'
@@ -46,11 +82,17 @@ const handlePass = () => {
           <img v-else src="../assets/updated.gif" class="h-full w-full logo" />
         </div>
         <div class="flex flex-col items-center justify-center w-full px-10">
-          <input v-model="passcode"  type="password" placeholder="enter passcode"
+          <input v-if="isEmail" v-model="email"  type="text" placeholder="enter your email"
+            class="w-full h-full bg-black border-white border text-white mb-5 p-4 rounded" />
+            <input v-else-if="!isEmail && !isWrongCode" v-model="passcode"  type="password" placeholder="enter passcode"
             class="w-full h-full bg-black border-red-400 border text-white mb-5 p-4 rounded" />
-          <button @click="handlePass" class="text-white text-2xl    p-2 cursor-pointer">
+          <button v-if="!isEmail && !isWrongCode" @click="handlePass" class="text-white text-2xl p-2 cursor-pointer">
             JOIN
           </button>
+
+          <div v-if="!isWrongCode" class="flex text-white w-full justify-end cursor-pointer">
+           <span @click="handleRegisterClick" class="text-sm">{{ isEmail ? 'Proceed' : 'Register' }}</span>
+          </div>
         </div>
       </div>
     </div>

@@ -41,7 +41,6 @@ setTimeout(() => {
   location.reload()
 }, 4000);
 
-
 } 
 
 const handleRegisterClick = () => {

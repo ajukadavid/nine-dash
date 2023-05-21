@@ -4,14 +4,16 @@ import gsap from 'gsap'
 import { collection, addDoc, getDocs } from "firebase/firestore"
 import db from '../composables/use-firebase'
 
-// import { sendEmail } from '../composables/email-service'
 
 const passcode = ref('')
+const emailSent = ref(false)
 const email = ref('')
 const isWrongCode = ref(false)
 const isEmail = ref(false)
 
 const createItem = async () => {
+
+
   const colRef = collection(db, 'users')
       // data to send
       const dataObj = {
@@ -24,12 +26,21 @@ const createItem = async () => {
       // access auto-generated ID with '.id'
       console.log('Document was created with ID:', docRef.id)
 
+      emailSent.value = true
+
       const querySnapshot = await getDocs(collection(db, "users"));
 
       querySnapshot.forEach((doc:any) => {
 
       console.log(doc.data());
 })
+
+setTimeout(() => {
+  emailSent.value = true
+  email.value = ''
+  location.reload()
+}, 4000);
+
 
 } 
 
@@ -64,7 +75,7 @@ const handlePass = () => {
   passcode.value = ''
   setTimeout(() => {
     isWrongCode.value = false
-}, 9000);
+}, 5000);
   return
 }
 
@@ -79,19 +90,23 @@ const handlePass = () => {
           <div class="flex justify-center items-center animate-bounce w-fullgit " v-if="isWrongCode">
             <p class="text-red-700 text-4xl lg:text-6xl lg:ml-0  leading-loose" >keep off</p>
           </div>
+          <div class="flex justify-center items-center animate-bounce w-fullgit " v-if="emailSent">
+            <p class="text-green-700 text-4xl lg:text-6xl lg:ml-0  leading-loose" >accepted.</p>
+          </div>
           <img v-else src="../assets/updated.gif" class="h-full w-full logo" />
         </div>
-        <div class="flex flex-col items-center justify-center w-full px-10">
-          <input v-if="isEmail" v-model="email"  type="text" placeholder="enter your email"
-            class="w-full h-full bg-black border-white border text-white mb-5 p-4 rounded" />
-            <input v-else-if="!isEmail && !isWrongCode" v-model="passcode"  type="password" placeholder="enter passcode"
-            class="w-full h-full bg-black border-red-400 border text-white mb-5 p-4 rounded" />
-          <button v-if="!isEmail && !isWrongCode" @click="handlePass" class="text-white text-2xl p-2 cursor-pointer">
+        <div class="flex flex-col items-center justify-center w-full px-5">
+          <div class="flex justify-between items-center" v-if="!isEmail">
+            <input v-model="passcode"  type="password" placeholder="enter passcode"
+            class="w-3/4 h-[50px] bg-black border-red-400 border text-white mb-5 p-4 rounded" />
+          <button v-if="!isEmail && !isWrongCode" @click="handlePass" class="text-white text-xl mb-4 px-2 cursor-pointer">
             JOIN
           </button>
-
-          <div v-if="!isWrongCode" class="flex text-white w-full justify-end cursor-pointer">
-           <span @click="handleRegisterClick" class="text-sm">{{ isEmail ? 'Proceed' : 'Register' }}</span>
+          </div>
+          <input v-if="isEmail && !emailSent" v-model="email"  type="text" placeholder="enter your email"
+            class="w-full h-full bg-black border-white border text-white mb-5 p-4 rounded" />
+          <div v-if="!isWrongCode && !emailSent" class="flex text-white w-full justify-center mt-5 cursor-pointer">
+           <span @click="handleRegisterClick" class="text-xl">{{ isEmail ? 'Proceed' : 'apply' }}</span>
           </div>
         </div>
       </div>

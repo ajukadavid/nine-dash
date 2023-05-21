@@ -98,7 +98,7 @@ const handlePass = () => {
         <div class="flex flex-col items-center justify-center w-full px-5">
           <div class="flex justify-between items-center" v-if="!isEmail">
             <input v-model="passcode"  type="password" placeholder="enter passcode"
-            class="w-3/4 h-[50px] bg-black border-red-400 border text-white mb-5 p-4 rounded" />
+            class="w-3/4 h-[50px] bg-black border-red-400 border text-white mx-6 mb-5 p-4 rounded" />
           <button v-if="!isEmail && !isWrongCode" @click="handlePass" class="text-white text-xl mb-4 px-2 cursor-pointer">
             JOIN
           </button>
@@ -106,7 +106,7 @@ const handlePass = () => {
           <input v-if="isEmail && !emailSent" v-model="email"  type="text" placeholder="enter your email"
             class="w-full h-full bg-black border-white border text-white mb-5 p-4 rounded" />
           <div v-if="!isWrongCode && !emailSent" class="flex text-white w-full justify-center mt-5 cursor-pointer">
-           <span @click="handleRegisterClick" class="text-xl">{{ isEmail ? 'Proceed' : 'apply' }}</span>
+           <span @click="handleRegisterClick" class="text-xs">{{ isEmail ? 'Proceed' : 'no passcode? apply here.' }}</span>
           </div>
         </div>
       </div>

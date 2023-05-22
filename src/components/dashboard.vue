@@ -104,7 +104,7 @@ const handlePass = () => {
           </button>
           </div>
           <input v-if="isEmail && !emailSent" v-model="email"  type="text" placeholder="enter your email"
-            class="w-full h-[40px] bg-black border-white border text-white mb-5 p-4 rounded" />
+            class="w-full h-[50px] bg-black border-white border text-white mb-5 p-4 rounded" />
           <div @click="handleRegisterClick" v-if="!isWrongCode && !emailSent" class="flex text-white text-xs lg:text-3xl  w-full justify-center mt-5 cursor-pointer">
            <span v-if="isEmail">Submit</span>
            <div v-else class="flex mx-10">

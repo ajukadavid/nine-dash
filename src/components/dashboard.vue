@@ -90,7 +90,7 @@ const handlePass = () => {
           <div class="flex justify-center items-center animate-bounce w-fullgit" v-if="isWrongCode">
             <p class="text-red-700 text-4xl lg:text-6xl lg:ml-0  leading-loose" >keep off</p>
           </div>
-          <img v-else src="../assets/updated.gif" class="h-full w-full logo" />
+          <img v-else-if="!emailSent && !isWrongCode" src="../assets/updated.gif" class="h-full w-full logo" />
           <div class="flex justify-center items-center animate-bounce w-fullgit " v-if="emailSent">
             <p class="text-green-700 text-4xl lg:text-6xl lg:ml-0  leading-loose" >accepted.</p>
           </div>
@@ -105,8 +105,8 @@ const handlePass = () => {
           </div>
           <input v-if="isEmail && !emailSent" v-model="email"  type="text" placeholder="enter your email"
             class="w-full h-full bg-black border-white border text-white mb-5 p-4 rounded" />
-          <div v-if="!isWrongCode && !emailSent" class="flex text-white w-full justify-center mt-5 cursor-pointer">
-           <span @click="handleRegisterClick" class="text-xs">{{ isEmail ? 'Proceed' : 'no passcode? apply here.' }}</span>
+          <div v-if="!isWrongCode && !emailSent" class="flex text-white text-base  w-full justify-center mt-5 cursor-pointer">
+           <span @click="handleRegisterClick" class="text-xs lg:text-3xl">{{ isEmail ? 'Proceed' : 'no passcode? apply here.' }}</span>
           </div>
         </div>
       </div>

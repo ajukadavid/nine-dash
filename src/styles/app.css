@@ -5,10 +5,10 @@
 
 
 @font-face {
-    font-family: 'pricedow';
-    src: url('../assets/fonts/pricedow.ttf')
+    font-family: 'joystix';
+    src: url('../assets/fonts/joystix.otf')
 }
 
 body {
-    font-family: pricedow;
+    font-family: joystix;
 }

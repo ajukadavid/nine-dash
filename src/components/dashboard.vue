@@ -83,8 +83,8 @@ const handlePass = () => {
 </script>
 
 <template>
-  <div class="flex items-center justify-center h-screen overflow-hidden">
-  <div class="w-full justify-center flex bg-black items-center h-screen overflow-hidden">
+  <div class="flex items-center justify-center h-screen overflow-hidden bg-black">
+  <div class="w-full justify-center flex bg-black items-center mb-[90px] overflow-hidden">
       <div class="img-wrapper flex flex-col justify-center items-center">
         <div class="flex h-fit w-fit items-center justify-center">
           <div class="flex justify-center items-center animate-bounce w-fullgit" v-if="isWrongCode">
@@ -95,7 +95,7 @@ const handlePass = () => {
             <p class="text-green-700 text-4xl lg:text-6xl lg:ml-0  leading-loose" >accepted.</p>
           </div>
         </div>
-        <div class="flex flex-col items-center justify-center w-full px-5">
+        <div class="flex flex-col items-center justify-center w-full px-7">
           <div class="flex justify-between items-center w-full" v-if="!isEmail">
             <input v-if="!isWrongCode" v-model="passcode"  type="password" placeholder="enter passcode"
             class="w-full h-[40px] bg-black border-red-400 border text-base mx-4 text-white mb-5 p-4 rounded" />

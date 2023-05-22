@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        joystix: ['joystix', 'monspace-regular']
+        pricedow: ['pricedow', 'monspace-regular']
       }
     },
   },

@@ -87,17 +87,17 @@ const handlePass = () => {
     <div class="justify-center flex bg-black items-center h-screen overflow-hidden">
       <div class="img-wrapper flex flex-col justify-center items-center">
         <div class="flex h-fit w-fit items-center justify-center">
-          <div class="flex justify-center items-center animate-bounce w-fullgit " v-if="isWrongCode">
+          <div class="flex justify-center items-center animate-bounce w-fullgit" v-if="isWrongCode">
             <p class="text-red-700 text-4xl lg:text-6xl lg:ml-0  leading-loose" >keep off</p>
           </div>
+          <img v-else src="../assets/updated.gif" class="h-full w-full logo" />
           <div class="flex justify-center items-center animate-bounce w-fullgit " v-if="emailSent">
             <p class="text-green-700 text-4xl lg:text-6xl lg:ml-0  leading-loose" >accepted.</p>
           </div>
-          <img v-else src="../assets/updated.gif" class="h-full w-full logo" />
         </div>
         <div class="flex flex-col items-center justify-center w-full px-5">
           <div class="flex justify-between items-center w-full" v-if="!isEmail">
-            <input v-model="passcode"  type="password" placeholder="enter passcode"
+            <input v-if="!isWrongCode" v-model="passcode"  type="password" placeholder="enter passcode"
             class="w-full h-[50px] bg-black border-red-400 border text-base mx-4 text-white mb-5 p-4 rounded" />
           <button v-if="!isEmail && !isWrongCode" @click="handlePass" class="text-white text-xl mb-4 px-2 cursor-pointer">
             JOIN

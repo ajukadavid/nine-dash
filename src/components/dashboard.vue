@@ -88,17 +88,17 @@ const handlePass = () => {
       <div class="img-wrapper flex flex-col justify-center items-center">
         <div class="flex h-fit w-fit items-center justify-center">
           <div class="flex justify-center items-center animate-bounce w-fullgit" v-if="isWrongCode">
-            <p class="text-red-700 text-4xl lg:text-6xl lg:ml-0  leading-loose" >keep off</p>
+            <p class="text-red-700 text-4xl lg:text-6xl lg:ml-0  leading-loose" >access denied.</p>
           </div>
           <img v-else-if="!emailSent && !isWrongCode" src="../assets/updated.gif" class="h-full w-full logo" />
           <div class="flex justify-center items-center animate-bounce w-fullgit " v-if="emailSent">
             <p class="text-green-700 text-4xl lg:text-6xl lg:ml-0  leading-loose" >accepted.</p>
           </div>
         </div>
-        <div class="flex flex-col items-center justify-center w-full px-7">
+        <div class="flex flex-col items-center justify-center w-full px-6 ">
           <div class="flex justify-between items-center w-full" v-if="!isEmail">
             <input v-if="!isWrongCode" v-model="passcode"  type="password" placeholder="enter passcode"
-            class="w-full h-[40px] bg-black border-red-400 border text-base mx-4 text-white mb-5 p-4 rounded" />
+            class="w-full h-[40px] bg-black border-red-400 border text-sm mx-4 text-white mb-5 p-4 rounded" />
           <button v-if="!isEmail && !isWrongCode" @click="handlePass" class="text-white text-xl mb-4 px-2 cursor-pointer">
             JOIN
           </button>
@@ -106,7 +106,7 @@ const handlePass = () => {
           <input v-if="isEmail && !emailSent" v-model="email"  type="text" placeholder="enter your email"
             class="w-full h-[40px] bg-black border-white border text-white mb-5 p-4 rounded" />
           <div @click="handleRegisterClick" v-if="!isWrongCode && !emailSent" class="flex text-white text-xs lg:text-3xl  w-full justify-center mt-5 cursor-pointer">
-           <span v-if="isEmail">Proceed</span>
+           <span v-if="isEmail">Submit</span>
            <div v-else class="flex">
             <span>no passcode? </span>
             <span class="text-red-500 ml-1">apply here.</span>

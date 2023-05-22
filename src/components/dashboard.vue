@@ -83,8 +83,8 @@ const handlePass = () => {
 </script>
 
 <template>
-  <div class="h-screen">
-    <div class="justify-center flex bg-black items-center h-screen overflow-hidden">
+  <div class="flex items-center justify-center h-screen overflow-hidden">
+  <div class="w-full justify-center flex bg-black items-center h-screen overflow-hidden">
       <div class="img-wrapper flex flex-col justify-center items-center">
         <div class="flex h-fit w-fit items-center justify-center">
           <div class="flex justify-center items-center animate-bounce w-fullgit" v-if="isWrongCode">
@@ -114,8 +114,9 @@ const handlePass = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div> 
   </div>
+   
 </template>
 <style scoped>
 .img-wrapper {

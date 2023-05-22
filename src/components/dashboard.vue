@@ -96,9 +96,9 @@ const handlePass = () => {
           <img v-else src="../assets/updated.gif" class="h-full w-full logo" />
         </div>
         <div class="flex flex-col items-center justify-center w-full px-5">
-          <div class="flex justify-between items-center" v-if="!isEmail">
+          <div class="flex justify-between items-center w-full" v-if="!isEmail">
             <input v-model="passcode"  type="password" placeholder="enter passcode"
-            class="w-3/4 h-[50px] bg-black border-red-400 border text-xs text-white mx-6 mb-5 p-4 rounded" />
+            class="w-full h-[50px] bg-black border-red-400 border text-base mx-4 text-white mb-5 p-4 rounded" />
           <button v-if="!isEmail && !isWrongCode" @click="handlePass" class="text-white text-xl mb-4 px-2 cursor-pointer">
             JOIN
           </button>

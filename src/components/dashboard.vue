@@ -105,7 +105,7 @@ const handlePass = () => {
           </div>
           <input v-if="isEmail && !emailSent" v-model="email"  type="text" placeholder="enter your email"
             class="w-full h-[50px] bg-black border-white border text-white mb-5 p-4 rounded" />
-          <div  v-if="!isWrongCode && !emailSent" class="flex text-white text-xs lg:text-base  w-full justify-center mt-5 ">
+          <div  v-if="!isWrongCode && !emailSent" class="flex text-white text-[9px] lg:text-base  w-full justify-center mt-5 ">
            <span v-if="isEmail">Submit</span>
            <div v-else class="mx-10 lg:m-0">
             <span>no passcode? </span>

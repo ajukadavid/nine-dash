@@ -12,7 +12,7 @@ export default {
     },
     colors: {
       ...colors,
-      'purpleBg': '#E727E5'
+      'purpleBg': '#5d3fd3'
 
     }
   },

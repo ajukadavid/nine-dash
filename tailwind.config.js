@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const colors = require('tailwindcss/colors')
+
 export default {
   content: [],
   theme: {
@@ -7,6 +10,11 @@ export default {
         pricedow: ['pricedow', 'monspace-regular']
       }
     },
+    colors: {
+      ...colors,
+      'purpleBg': '#E727E5'
+
+    }
   },
   plugins: [],
   content: [

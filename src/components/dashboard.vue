@@ -106,7 +106,7 @@ const handlePass = () => {
           <input v-if="isEmail && !emailSent" v-model="email"  type="text" placeholder="enter your email"
             class="w-full h-[50px] bg-black border-white border text-white mb-5 p-4 rounded" />
           <div  v-if="!isWrongCode && !emailSent" class="flex text-white text-[9px] lg:text-base  w-full justify-center mt-5 ">
-           <span v-if="isEmail">Submit</span>
+           <span @click="handleRegisterClick" v-if="isEmail">Submit</span>
            <div v-else class="mx-10 lg:m-0">
             <span>no passcode? </span>
             <span  @click="handleRegisterClick" class="text-red-500 ml-3 lg:ml-1 mb-4 cursor-pointer">apply here.</span>

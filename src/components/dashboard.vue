@@ -88,7 +88,7 @@ const handlePass = () => {
       <div class="img-wrapper flex flex-col justify-center items-center">
         <div class="flex h-fit w-fit items-center justify-center">
           <div class="flex justify-center items-center animate-bounce w-fullgit" v-if="isWrongCode">
-            <p class="text-red-700 text-2xl lg:text-6xl lg:ml-0  leading-loose" >access denied.</p>
+            <p class="text-red-700 text-2xl lg:text-6xl lg:ml-0 mt-3 mr-r lg:mr-0 lg:mt-0 leading-loose" >access denied.</p>
           </div>
           <img v-else-if="!emailSent && !isWrongCode" src="../assets/updated.gif" class="h-full w-full logo" />
           <div class="flex justify-center items-center animate-bounce w-fullgit " v-if="emailSent">

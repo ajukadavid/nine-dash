@@ -15,6 +15,7 @@
     "emailjs": "^4.0.1",
     "firebase": "^9.22.0",
     "gsap": "^3.11.5",
+    "mailchimp-api-v3": "^1.15.0",
     "three": "0.134",
     "troisjs": "^0.3.4",
     "vue": "^3.2.47",

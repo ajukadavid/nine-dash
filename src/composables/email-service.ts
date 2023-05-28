@@ -15,24 +15,20 @@
 // 	});
 // }
 
+import axios from 'axios'
+  
 
-
-
-// export const makeRequest = async () => {
-//     const apiUrl = 'https://us21.api.mailchimp.com/3.0/ping';
-//     const authToken = '70dd6ed82bfac6c0e272fcd8470fa01d-us21';
-
-//     try {
-//         const response = await axios.get(apiUrl, {
-//           headers: {
-//             Authorization: `Bearer ${authToken}`,
-//           },
-//         });
+export const makeRequest = async () => {
+    const apiUrl = 'http://localhost:3001/checking';
+    try {
+        const response = await axios.get(apiUrl, {       
+             
+        });
     
-//         // Handle the response data
-//         console.log(response.data);
-//       } catch (error) {
-//         // Handle any errors
-//         console.error(error);
-//       }
-// }
+        // Handle the response data
+        console.log(response.data);
+      } catch (error) {
+        // Handle any errors
+        console.error(error);
+      }
+}

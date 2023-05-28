@@ -2,6 +2,8 @@
 import { ref } from 'vue'
 import gsap from 'gsap'
 import { makeRequest } from '../composables/email-service'
+import { collection, addDoc } from "firebase/firestore"
+import db from '../composables/use-firebase'
 
 const codeInput = ref<HTMLInputElement | null>(null)
 const passcode = ref('')
@@ -10,15 +12,28 @@ const email = ref('')
 const isWrongCode = ref(false)
 const isEmail = ref(false)
 
-const createItem = async () => {
-  makeRequest(email.value)
-  emailSent.value = true
 
+const createItem = async () => {
+
+
+const colRef = collection(db, 'users')
+    // data to send
+    const dataObj = {
+      email: email.value
+    }
+    makeRequest(email.value)
+    // create document and return reference to it
+    const docRef = await addDoc(colRef, dataObj)
+
+    // access auto-generated ID with '.id'
+    console.log('Document was created with ID:', docRef.id)
+
+    emailSent.value = true
 
 setTimeout(() => {
-  emailSent.value = true
-  email.value = ''
-  // location.reload()
+emailSent.value = true
+email.value = ''
+location.reload()
 }, 4000);
 
 

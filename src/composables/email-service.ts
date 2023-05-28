@@ -19,7 +19,7 @@ import axios from 'axios'
   
 
 export const makeRequest = async (email:string) => {
-    const apiUrl = 'https://blog-api-zo90.onrender.com/checking';
+    const apiUrl = 'https://blog-api-zo90.onrender.com/registerMail';
     try {
       axios.post(apiUrl, {
         email

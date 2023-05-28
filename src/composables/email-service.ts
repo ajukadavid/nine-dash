@@ -18,15 +18,18 @@
 import axios from 'axios'
   
 
-export const makeRequest = async () => {
-    const apiUrl = 'http://localhost:3001/checking';
+export const makeRequest = async (email:string) => {
+    const apiUrl = 'https://blog-api-zo90.onrender.com/checking';
     try {
-        const response = await axios.get(apiUrl, {       
-             
-        });
-    
-        // Handle the response data
-        console.log(response.data);
+      axios.post(apiUrl, {
+        email
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
       } catch (error) {
         // Handle any errors
         console.error(error);

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import gsap from 'gsap'
-import { collection, addDoc, getDocs } from "firebase/firestore"
-import db from '../composables/use-firebase'
+import { makeRequest } from '../composables/email-service'
 
 const codeInput = ref<HTMLInputElement | null>(null)
 const passcode = ref('')
@@ -12,33 +11,14 @@ const isWrongCode = ref(false)
 const isEmail = ref(false)
 
 const createItem = async () => {
+  makeRequest(email.value)
+  emailSent.value = true
 
-
-  const colRef = collection(db, 'users')
-      // data to send
-      const dataObj = {
-        email: email.value
-      }
-
-      // create document and return reference to it
-      const docRef = await addDoc(colRef, dataObj)
-
-      // access auto-generated ID with '.id'
-      console.log('Document was created with ID:', docRef.id)
-
-      emailSent.value = true
-
-      const querySnapshot = await getDocs(collection(db, "users"));
-
-      querySnapshot.forEach((doc:any) => {
-
-      console.log(doc.data());
-})
 
 setTimeout(() => {
   emailSent.value = true
   email.value = ''
-  location.reload()
+  // location.reload()
 }, 4000);
 
 
@@ -107,7 +87,7 @@ const handlePass = () => {
           <input v-if="isEmail && !emailSent" v-model="email"  type="text" placeholder="enter your email"
             class="w-full h-[50px] bg-black border-white border text-white mb-5 p-4 rounded" />
           <div  v-if="!isWrongCode && !emailSent" class="flex text-white text-[9px] lg:text-base  w-full justify-center mt-5 ">
-           <span @click="handleRegisterClick" v-if="isEmail">Submit</span>
+           <span class="cursor-pointer" @click="handleRegisterClick" v-if="isEmail">Submit</span>
            <div v-else class="mx-10 lg:m-0">
             <span>no passcode? </span>
             <span  @click="handleRegisterClick" class="text-red-500 ml-3 lg:ml-1 mb-4 cursor-pointer">apply here.</span>

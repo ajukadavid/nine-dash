@@ -4,7 +4,7 @@ import gsap from 'gsap'
 import { collection, addDoc, getDocs } from "firebase/firestore"
 import db from '../composables/use-firebase'
 
-
+const codeInput = ref<HTMLInputElement | null>(null)
 const passcode = ref('')
 const emailSent = ref(false)
 const email = ref('')
@@ -73,6 +73,7 @@ const handlePass = () => {
   }
   isWrongCode.value = true
   passcode.value = ''
+  codeInput.value?.blur()
   setTimeout(() => {
     isWrongCode.value = false
 }, 5000);
@@ -97,7 +98,7 @@ const handlePass = () => {
         </div>
         <div class="flex flex-col items-center justify-center w-full px-6 ">
           <div class="flex justify-between items-center w-full" v-if="!isEmail">
-            <input v-if="!isWrongCode" v-model="passcode"  type="password" placeholder="enter passcode"
+            <input ref="codeInput" v-if="!isWrongCode" v-model="passcode"  type="password" placeholder="enter passcode"
             class="w-full h-[45px] bg-black border-red-500 border text-sm mx-4 text-white mb-1 p-4 rounded" />
           <button v-if="!isEmail && !isWrongCode" @click="handlePass" class="text-white text-xl mb-1 px-2 cursor-pointer">
             JOIN

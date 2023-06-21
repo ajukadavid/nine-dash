@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import { makeRequest } from '../composables/email-service'
 import { collection, addDoc } from "firebase/firestore"
 import db from '../composables/use-firebase'
+import wrapper from './wrapper.vue'
 
 const codeInput = ref<HTMLInputElement | null>(null)
 const passcode = ref('')
@@ -33,7 +34,7 @@ const colRef = collection(db, 'users')
 setTimeout(() => {
 emailSent.value = true
 email.value = ''
-location.reload()
+// location.reload()
 }, 4000);
 
 
@@ -80,6 +81,7 @@ const handlePass = () => {
 
 <template>
   <div class="flex items-center justify-center h-screen overflow-hidden bg-black">
+    <wrapper />
   <div class="w-full justify-center flex bg-black items-center mb-[90px] overflow-hidden">
       <div class="img-wrapper flex flex-col justify-center items-center">
         <div class="flex h-fit w-fit items-center justify-center">

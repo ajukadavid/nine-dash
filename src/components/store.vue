@@ -1,0 +1,3 @@
+<template>
+le value
+</template>

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import  { useRouter, useRoute} from 'vue-router'
 import gsap from 'gsap'
 import { makeRequest } from '../composables/email-service'
 import { collection, addDoc } from "firebase/firestore"
 import db from '../composables/use-firebase'
-import wrapper from './wrapper.vue'
 
 const codeInput = ref<HTMLInputElement | null>(null)
 const passcode = ref('')
@@ -12,6 +12,8 @@ const emailSent = ref(false)
 const email = ref('')
 const isWrongCode = ref(false)
 const isEmail = ref(false)
+const $router = useRouter()
+const $route = useRoute()
 
 
 const createItem = async () => {
@@ -51,6 +53,9 @@ const handleRegisterClick = () => {
 }
 const handlePass = () => {
   if (passcode.value === 'turndasix') {
+    console.log($route.path)
+    $router.push({name: 'store' })
+    isWrongCode.value = false
     // window.location.href = 'https://nine.company.site/'
   } else {
     gsap.from(".logo", { 
@@ -65,14 +70,14 @@ const handlePass = () => {
         })
       }
      })
-
-  }
-  isWrongCode.value = true
   passcode.value = ''
   codeInput.value?.blur()
   setTimeout(() => {
     isWrongCode.value = false
 }, 5000);
+  }
+ 
+
   return
 }
 
@@ -81,7 +86,7 @@ const handlePass = () => {
 
 <template>
   <div class="flex items-center justify-center h-screen overflow-hidden bg-black">
-    <wrapper />
+   
   <div class="w-full justify-center flex bg-black items-center mb-[90px] overflow-hidden">
       <div class="img-wrapper flex flex-col justify-center items-center">
         <div class="flex h-fit w-fit items-center justify-center">

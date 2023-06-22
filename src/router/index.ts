@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter } from 'vue-router'
 
 import dashboard from '../components/dashboard.vue'
-import email from '../components/email.vue'
+import store from '../components/store.vue'
 
 const routes = [
 	{
@@ -10,9 +10,9 @@ const routes = [
 		component: dashboard,
 	},
 	{
-		path: '/new',
-		name: 'email',
-		component: email,
+		path: '/store',
+		name: 'store',
+		component: store,
 	},
 ]
 

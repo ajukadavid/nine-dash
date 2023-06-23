@@ -80,6 +80,7 @@ const handlePass = () => {
 }
 
 onMounted(() => {
+  codeInput.value?.focus()
   const appDoc = document.getElementById('app')
   appDoc!.style.display = 'block'
   const store = document.getElementById('store')

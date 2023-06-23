@@ -51,10 +51,9 @@ const handleRegisterClick = () => {
   }
 }
 const handlePass = () => {
-  if (passcode.value === 'turndasix') {
+  if (passcode.value === 'doasthouwilt') {
     $router.push({ name: 'store' })
     isWrongCode.value = false
-    // window.location.href = 'https://nine.company.site/'
   } else {
     gsap.from(".logo", {
       x: -60,

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 import gsap from 'gsap'
 import { makeRequest } from '../composables/email-service'
 import { collection, addDoc } from "firebase/firestore"
@@ -13,7 +13,6 @@ const email = ref('')
 const isWrongCode = ref(false)
 const isEmail = ref(false)
 const $router = useRouter()
-const $route = useRoute()
 
 
 const createItem = async () => {
@@ -36,7 +35,7 @@ const createItem = async () => {
   setTimeout(() => {
     emailSent.value = true
     email.value = ''
-    // location.reload()
+    location.reload()
   }, 4000);
 
 
@@ -53,7 +52,6 @@ const handleRegisterClick = () => {
 }
 const handlePass = () => {
   if (passcode.value === 'turndasix') {
-    console.log($route.path)
     $router.push({ name: 'store' })
     isWrongCode.value = false
     // window.location.href = 'https://nine.company.site/'
@@ -70,14 +68,15 @@ const handlePass = () => {
         })
       }
     })
-    passcode.value = ''
+    isWrongCode.value = true
+
+  }
+
+  passcode.value = ''
     codeInput.value?.blur()
     setTimeout(() => {
       isWrongCode.value = false
     }, 5000);
-  }
-
-
   return
 }
 

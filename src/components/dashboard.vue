@@ -105,7 +105,7 @@ onMounted(() => {
           </div>
         </div>
         <div class="flex flex-col items-center justify-center w-full px-6 ">
-          <div class="flex flex-col justify-between items-center w-full" v-if="!isEmail">
+          <div class="flex justify-between items-center w-full" v-if="!isEmail">
             <input ref="codeInput" v-if="!isWrongCode" v-model="passcode" type="password" placeholder="enter passcode"
               class="w-full h-[45px] bg-black border-red-500 border text-sm mx-4 text-white mb-1 p-4 rounded" />
             <button v-if="!isEmail && !isWrongCode" @click="handlePass"

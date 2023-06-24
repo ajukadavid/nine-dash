@@ -138,6 +138,6 @@ onMounted(() => {
 }
 
 .logo {
-  margin-bottom: 10px;
+  margin-block: 50px;
 }
 </style>

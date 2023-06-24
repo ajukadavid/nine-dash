@@ -102,12 +102,12 @@ onMounted(() => {
             <p class="text-red-700 text-2xl lg:text-6xl lg:ml-0 mt-3 mr-r lg:mr-0 lg:mt-0 leading-loose">access denied.
             </p>
           </div>
-          <img v-else-if="!emailSent && !isWrongCode" src="../assets/updated.gif" class="h-full w-full logo" />
+          <img v-else-if="!emailSent && !isWrongCode" src="/mail.gif"  class="h-full w-full logo" />
           <div class="flex justify-center items-center animate-bounce w-fullgit " v-if="emailSent">
             <p class="text-green-700 text-4xl lg:text-6xl lg:ml-0  leading-loose">accepted.</p>
           </div>
         </div>
-        <div class="flex flex-col items-center justify-center w-full px-6 ">
+        <div class="flex flex-col items-center justify-center w-full px-6 mt-4">
           <div class="flex justify-between items-center w-full" v-if="!isEmail">
             <input ref="codeInput" v-if="!isWrongCode" v-model="passcode" type="password" placeholder="enter passcode"
               class="w-full h-[45px] bg-black outline-red-500 border-red-500 border text-sm mx-4 text-white mb-1 p-4 rounded" />
@@ -135,5 +135,9 @@ onMounted(() => {
 .img-wrapper {
   height: fit-content;
   width: 400px;
+}
+
+.logo {
+  margin-bottom: 10px;
 }
 </style>

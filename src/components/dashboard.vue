@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 // import { useRouter } from 'vue-router'
 import gsap from 'gsap'
 import { makeRequest } from '../composables/email-service'
@@ -52,7 +52,7 @@ const handleRegisterClick = () => {
 }
 const handlePass = () => {
   const linkUrl = 'https://turndasix.company.site/';
-  if (passcode.value === 'doasthouwilt') {
+  if (passcode.value === '9316') {
     window.location.replace(
  linkUrl
 );
@@ -82,12 +82,6 @@ const handlePass = () => {
   return
 }
 
-onMounted(() => {
-  const appDoc = document.getElementById('app')
-  appDoc!.style.display = 'block'
-  const store = document.getElementById('store')
-  store!.style.display = 'none'
-})
 
 
 </script>

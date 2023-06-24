@@ -1,7 +1,6 @@
 import { createWebHistory, createRouter } from 'vue-router'
 
 import dashboard from '../components/dashboard.vue'
-import store from '../components/store.vue'
 
 const routes = [
 	{
@@ -9,11 +8,7 @@ const routes = [
 		name: 'dashboard',
 		component: dashboard,
 	},
-	{
-		path: '/store',
-		name: 'store',
-		component: store,
-	},
+
 ]
 
 const router = createRouter({

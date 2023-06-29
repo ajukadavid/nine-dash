@@ -1,12 +1,18 @@
 import { createWebHistory, createRouter } from 'vue-router'
 
 import dashboard from '../components/dashboard.vue'
+import start from '../components/start.vue'
 
 const routes = [
 	{
 		path: '/',
 		name: 'dashboard',
 		component: dashboard,
+	},
+	{
+		path: '/start',
+		name: 'start',
+		component: start,
 	},
 
 ]

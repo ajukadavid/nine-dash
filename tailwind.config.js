@@ -1,12 +1,20 @@
 /** @type {import('tailwindcss').Config} */
+
+const colors = require('tailwindcss/colors')
+
 export default {
   content: [],
   theme: {
     extend: {
       fontFamily: {
-        joystix: ['joystix', 'monspace-regular']
+        pricedow: ['pricedow', 'monspace-regular']
       }
     },
+    colors: {
+      ...colors,
+      'purpleBg': '#5d3fd3'
+
+    }
   },
   plugins: [],
   content: [

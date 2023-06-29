@@ -1,7 +1,6 @@
 import { createWebHistory, createRouter } from 'vue-router'
 
 import dashboard from '../components/dashboard.vue'
-import email from '../components/email.vue'
 
 const routes = [
 	{
@@ -9,11 +8,7 @@ const routes = [
 		name: 'dashboard',
 		component: dashboard,
 	},
-	{
-		path: '/new',
-		name: 'email',
-		component: email,
-	},
+
 ]
 
 const router = createRouter({

@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCzUardcFInC1Os7ynHGiq5R2YKnZSmKEk",
-  authDomain: "nine-29413.firebaseapp.com",
-  projectId: "nine-29413",
-  storageBucket: "nine-29413.appspot.com",
-  messagingSenderId: "981466426779",
-  appId: "1:981466426779:web:f22dc05032adf18473453e"
+  apiKey: "AIzaSyBuwcwo814ZfjmKVrcwPRfaD6YahrcLWpg",
+  authDomain: "nine-c6a0a.firebaseapp.com",
+  projectId: "nine-c6a0a",
+  storageBucket: "nine-c6a0a.appspot.com",
+  messagingSenderId: "740031502016",
+  appId: "1:740031502016:web:7fc9d432d40447727a7f25"
 };
 
 // init firebase

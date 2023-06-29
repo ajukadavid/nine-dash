@@ -15,25 +15,23 @@
 // 	});
 // }
 
-
 import axios from 'axios'
+  
 
-
-// export const makeRequest = async () => {
-//     const apiUrl = 'https://us21.api.mailchimp.com/3.0/ping';
-//     const authToken = '70dd6ed82bfac6c0e272fcd8470fa01d-us21';
-
-//     try {
-//         const response = await axios.get(apiUrl, {
-//           headers: {
-//             Authorization: `Bearer ${authToken}`,
-//           },
-//         });
-    
-//         // Handle the response data
-//         console.log(response.data);
-//       } catch (error) {
-//         // Handle any errors
-//         console.error(error);
-//       }
-// }
+export const makeRequest = async (email:string) => {
+    const apiUrl = 'https://blog-api-zo90.onrender.com/registerMail';
+    try {
+      axios.post(apiUrl, {
+        email
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      } catch (error) {
+        // Handle any errors
+        console.error(error);
+      }
+}

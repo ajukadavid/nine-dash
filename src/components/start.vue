@@ -4,14 +4,7 @@
 
 <template>
     <div class="border-8 border-purpleBg w-full  h-screen">
-        <div class="wrapper">
-            <!-- <img src="/mail.gif" class="w-[200px] h-32" />
-            <div class="start-text flex text-red-700 gap-2">
-                <span>></span>
-                <span>Press start</span>
-            </div> -->
-        </div>
-
+        <img src="/pressstartscreenclear.png" />
     </div>
 </template>
 
@@ -27,12 +20,12 @@
     text-shadow: white 1px 0 4px;
 }
 
-.wrapper {
-    background-image: url(/pressstartscreenclear.png);
+/* .wrapper {
+    background-image: url);
     height: 100%;
     z-index: 20;
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
-}
+} */
 </style>

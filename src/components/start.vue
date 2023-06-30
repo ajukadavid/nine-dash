@@ -4,11 +4,11 @@
 
 <template>
     <div class="wrapper flex bg-black items-center gap-5 justify-center flex-col">
-        <img src="/mail.gif" class="w-[200px] h-32" />
+        <!-- <img src="/mail.gif" class="w-[200px] h-32" />
         <div class="start-text flex text-red-700 gap-2">
             <span>></span>
             <span>Press start</span>
-        </div>
+        </div> -->
     </div>
 </template>
 

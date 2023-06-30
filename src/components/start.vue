@@ -7,8 +7,8 @@
         <img src="/pressstartscreenclear.png" class="bg-img" />
 
         <div class="wrapper flex-col gap-3 items-center h-screen justify-center">
-            <img src="/mail.gif" class="w-80 h-30" />
-            <div class="flex gap-3 mt-10 ml-16 title text-red-500">
+            <img src="/mail.gif" class="w-60 h-30" />
+            <div class="flex gap-3 mt-6 ml-8 start-text text-red-500">
                 <span>></span>
                 <span>press start</span>
             </div>
@@ -35,9 +35,9 @@
 
 .wrapper {
     z-index: 20;
-    position: absolute;
+    position: fixed;
     top: 30%;
-    left: 10%;
+    left: 20%;
 
 }
 </style>

@@ -3,7 +3,8 @@
 </script>
 
 <template>
-    <div class="wrapper flex bg-black items-center gap-5 justify-center flex-col">
+    <div class="border-8 border-red-400 w-full  h-screen">
+        brr
         <!-- <img src="/mail.gif" class="w-[200px] h-32" />
         <div class="start-text flex text-red-700 gap-2">
             <span>></span>
@@ -23,12 +24,12 @@
     text-shadow: white 1px 0 4px;
 }
 
-.wrapper {
+/* .wrapper {
     background-image: url(/pressstartscreenclear.png);
     height: 100vh;
     z-index: 20;
     width: 100vw;
     background-repeat: no-repeat;
     background-size: cover;
-}
+} */
 </style>

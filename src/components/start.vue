@@ -3,7 +3,8 @@
 </script>
 
 <template>
-    <div class="box h-screen w-full gap-8 bg-black flex flex-col items-center justify-center">
+    <div class="h-screen w-full gap-8 bg-black flex flex-col items-center justify-center">
+
         <div class="flex h-fit w-fit items-center justify-center">
             <img src="/mail.gif" class="lg:h-[290px] lg:w-[500px] logo" />
 
@@ -11,7 +12,6 @@
         <div class="flex text-2xl text-red-700 start cursor-pointer">
             <span class="mr-4">></span>
             <span>press start</span>
-
         </div>
     </div>
 </template>
@@ -21,8 +21,5 @@
     text-shadow: white 1px 0px 2px;
 }
 
-.box {
-    border: 20px solid #C80BDE;
-    border-radius: 40px;
-}
+.box {}
 </style>

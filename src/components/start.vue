@@ -4,7 +4,7 @@
 
 <template>
     <div class="wrapper flex bg-black items-center gap-5 justify-center flex-col">
-        <img src="/mail.gif" class="w-96 h-60" />
+        <img src="/mail.gif" class="w-[200px] h-32" />
         <div class="start-text flex text-red-700 gap-2">
             <span>></span>
             <span>Press start</span>
@@ -26,6 +26,7 @@
 .wrapper {
     background-image: url(/pressstartscreenclear.png);
     height: 100vh;
+    z-index: 20;
     width: 100vw;
     background-repeat: no-repeat;
     background-size: cover;

@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="border-8 border-red-400 w-full p-2  h-screen">
+    <div class="border-8 border-purpleBg w-full  h-screen">
         <div class="wrapper">
             <!-- <img src="/mail.gif" class="w-[200px] h-32" />
             <div class="start-text flex text-red-700 gap-2">
@@ -21,6 +21,7 @@
     /* Styles for iPhone X and newer */
 
 }
+
 
 .start-text {
     text-shadow: white 1px 0 4px;

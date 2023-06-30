@@ -4,7 +4,7 @@
 
 <template>
     <div class="border-8 border-purpleBg w-full  h-screen">
-        <img src="/pressstartscreenclear.png" />
+        <img src="/pressstartscreenclear.png" class="img" />
     </div>
 </template>
 
@@ -13,6 +13,12 @@
 
     /* Styles for iPhone X and newer */
 
+}
+
+.img {
+    height: 100%;
+    z-index: -10;
+    position: fixed;
 }
 
 

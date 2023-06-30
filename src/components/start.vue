@@ -3,23 +3,31 @@
 </script>
 
 <template>
-    <div class="h-screen w-full gap-8 bg-black flex flex-col items-center justify-center">
-
-        <div class="flex h-fit w-fit items-center justify-center">
-            <img src="/mail.gif" class="lg:h-[290px] lg:w-[500px] logo" />
-
-        </div>
-        <div class="flex text-2xl text-red-700 start cursor-pointer">
-            <span class="mr-4">></span>
-            <span>press start</span>
+    <div class="wrapper flex bg-black items-center gap-5 justify-center flex-col">
+        <img src="/mail.gif" class="w-96 h-60" />
+        <div class="start-text flex text-red-700 gap-2">
+            <span>></span>
+            <span>Press start</span>
         </div>
     </div>
 </template>
 
 <style scoped>
-.start {
-    text-shadow: white 1px 0px 2px;
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) {
+
+    /* Styles for iPhone X and newer */
+
 }
 
-.box {}
+.start-text {
+    text-shadow: white 1px 0 4px;
+}
+
+.wrapper {
+    background-image: url(/pressstartscreenclear.png);
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 </style>

@@ -8,7 +8,7 @@
 
         <div class="wrapper flex-col gap-3 items-center h-screen justify-center">
             <img src="/mail.gif" class="w-60 h-30" />
-            <div class="flex gap-3 mt-6 ml-8 start-text text-red-500">
+            <div @click="$router.push('/menu')" class="flex gap-3 mt-6 ml-8 start-text text-red-500">
                 <span>></span>
                 <span>press start</span>
             </div>

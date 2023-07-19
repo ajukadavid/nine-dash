@@ -4,8 +4,6 @@
 
 <template>
     <div class="main m-0 w-full items-center justify-center  h-screen">
-        <img src="/pressstartscreenclear.png" class="bg-img" />
-
         <div class="wrapper flex-col gap-3 items-center h-screen justify-center">
             <img src="/mail.gif" class="w-60 h-30" />
             <div @click="$router.push('/menu')" class="flex gap-3 mt-6 ml-8 start-text text-red-500">

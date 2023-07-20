@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-// import gsap from 'gsap'
+import gsap from 'gsap'
 import { makeRequest } from '../composables/email-service'
 import { collection, addDoc } from "firebase/firestore"
 import db from '../composables/use-firebase'
@@ -51,36 +51,33 @@ const handleRegisterClick = () => {
   }
 }
 const handlePass = () => {
-  $router.push('/start')
-  // const linkUrl = 'https://turndasix.company.site/';
-  // if (passcode.value === '9316') {
-  //   window.location.replace(
-  //     linkUrl
-  //   );
-  //   isWrongCode.value = false
-  // } else {
-  //   gsap.from(".logo", {
-  //     x: -60,
-  //     fill: 'blue',
-  //     repeat: 3,
-  //     yoyo: true,
-  //     ease: "rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })",
-  //     onComplete: function () {
-  //       gsap.set('.logo', {
-  //         x: 0
-  //       })
-  //     }
-  //   })
-  //   isWrongCode.value = true
+  if (passcode.value === '9316') {
+    $router.push('/start')
 
-  // }
+    isWrongCode.value = false
+  } else {
+    gsap.from(".logo", {
+      x: -60,
+      fill: 'blue',
+      repeat: 3,
+      yoyo: true,
+      ease: "rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })",
+      onComplete: function () {
+        gsap.set('.logo', {
+          x: 0
+        })
+      }
+    })
+    isWrongCode.value = true
 
-  // passcode.value = ''
-  // codeInput.value?.blur()
-  // setTimeout(() => {
-  //   isWrongCode.value = false
-  // }, 5000);
-  // return
+  }
+
+  passcode.value = ''
+  codeInput.value?.blur()
+  setTimeout(() => {
+    isWrongCode.value = false
+  }, 5000);
+  return
 }
 
 

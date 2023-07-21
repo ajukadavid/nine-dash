@@ -1,93 +1,91 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+// import { ref } from 'vue'
 // import { useRouter } from 'vue-router'
-import gsap from 'gsap'
-import { makeRequest } from '../composables/email-service'
-import { collection, addDoc } from "firebase/firestore"
-import db from '../composables/use-firebase'
+// import gsap from 'gsap'
+// import { makeRequest } from '../composables/email-service'
+// import { collection, addDoc } from "firebase/firestore"
+// import db from '../composables/use-firebase'
 
-const codeInput = ref<HTMLInputElement | null>(null)
-const passcode = ref('')
-const emailSent = ref(false)
-const email = ref('')
-const isWrongCode = ref(false)
-const isEmail = ref(false)
+// const codeInput = ref<HTMLInputElement | null>(null)
+// const passcode = ref('')
+// const emailSent = ref(false)
+// const email = ref('')
+// const isWrongCode = ref(false)
+// const isEmail = ref(false)
 // const $router = useRouter()
 
 
-const createItem = async () => {
+// const createItem = async () => {
 
 
-  const colRef = collection(db, 'users')
-  // data to send
-  const dataObj = {
-    email: email.value
-  }
-  makeRequest(email.value)
-  // create document and return reference to it
-  const docRef = await addDoc(colRef, dataObj)
+//   const colRef = collection(db, 'users')
+//   // data to send
+//   const dataObj = {
+//     email: email.value
+//   }
+//   makeRequest(email.value)
+//   // create document and return reference to it
+//   const docRef = await addDoc(colRef, dataObj)
 
-  // access auto-generated ID with '.id'
-  console.log('Document was created with ID:', docRef.id)
+//   // access auto-generated ID with '.id'
+//   console.log('Document was created with ID:', docRef.id)
 
-  emailSent.value = true
+//   emailSent.value = true
 
-  setTimeout(() => {
-    emailSent.value = true
-    email.value = ''
-    location.reload()
-  }, 4000);
+//   setTimeout(() => {
+//     emailSent.value = true
+//     email.value = ''
+//     location.reload()
+//   }, 4000);
 
 
-}
+// }
 
-const handleRegisterClick = () => {
-  if (isEmail.value) {
-    if (!!email.value) {
-      createItem()
-    }
-  } else {
-    isEmail.value = true
-  }
-}
-const handlePass = () => {
-  const linkUrl = 'https://turndasix.company.site/';
-  if (passcode.value === '9316') {
-    window.location.replace(
- linkUrl
-);
-    isWrongCode.value = false
-  } else {
-    gsap.from(".logo", {
-      x: -60,
-      fill: 'blue',
-      repeat: 3,
-      yoyo: true,
-      ease: "rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })",
-      onComplete: function () {
-        gsap.set('.logo', {
-          x: 0
-        })
-      }
-    })
-    isWrongCode.value = true
+// const handleRegisterClick = () => {
+//   if (isEmail.value) {
+//     if (!!email.value) {
+//       createItem()
+//     }
+//   } else {
+//     isEmail.value = true
+//   }
+// }
+// const handlePass = () => {
+//   if (passcode.value === '9316') {
+//     $router.push('/start')
 
-  }
+//     isWrongCode.value = false
+//   } else {
+//     gsap.from(".logo", {
+//       x: -60,
+//       fill: 'blue',
+//       repeat: 3,
+//       yoyo: true,
+//       ease: "rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })",
+//       onComplete: function () {
+//         gsap.set('.logo', {
+//           x: 0
+//         })
+//       }
+//     })
+//     isWrongCode.value = true
 
-  passcode.value = ''
-  codeInput.value?.blur()
-  setTimeout(() => {
-    isWrongCode.value = false
-  }, 5000);
-  return
-}
+//   }
+
+//   passcode.value = ''
+//   codeInput.value?.blur()
+//   setTimeout(() => {
+//     isWrongCode.value = false
+//   }, 5000);
+//   return
+// }
 
 
 
 </script>
 
 <template>
-  <div class="flex items-center justify-center h-screen overflow-hidden bg-black">
+ <!-- <div class="flex items-center justify-center h-screen overflow-hidden bg-black">
 
     <div class="w-full justify-center flex bg-black items-center mb-[90px] overflow-hidden">
       <div class="img-wrapper flex flex-col justify-center items-center">
@@ -96,7 +94,7 @@ const handlePass = () => {
             <p class="text-red-700 text-2xl lg:text-6xl lg:ml-0 mt-3 mr-r lg:mr-0 lg:mt-0 leading-loose">access denied.
             </p>
           </div>
-          <img v-else-if="!emailSent && !isWrongCode" src="/mail.gif"  class="h-full w-full logo" />
+          <img v-else-if="!emailSent && !isWrongCode" src="/mail.gif" class="h-full w-full logo" />
           <div class="flex justify-center items-center animate-bounce w-fullgit " v-if="emailSent">
             <p class="text-green-700 text-4xl lg:text-6xl lg:ml-0  leading-loose">accepted.</p>
           </div>
@@ -123,8 +121,20 @@ const handlePass = () => {
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+  <div class="flex flex-col m-0 w-full items-center justify-center bg-black  h-screen">
+    <div class="flex h-fit w-fit items-center justify-center">
+      <img src="/mail.gif" class="w-full h-full" />
+
+    </div>
+            <div @click="$router.push('/menu')" class="flex cursor-pointer lg:text-3xl text-base gap-3 mt-6 start-text text-red-500">
+                <span>></span>
+                <span >press start</span>
+            </div>
+    </div>
 </template>
+
+
 <style scoped>
 .img-wrapper {
   height: fit-content;

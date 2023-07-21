@@ -6,7 +6,7 @@ const $router = useRouter();
 
 <template>
     <div class="flex justify-center bg-black h-screen px-16 pb-5">
-        <div class="flex-col  flex items-center h-screen bg-black mb-10">
+        <div class="flex-col  flex items-center h-screen bg-black pb-32 lg:pb-10">
             <img src="/updated.gif" class="h-[400px] mt-10" />
 
             <div 
@@ -16,7 +16,7 @@ const $router = useRouter();
                     <img
                         @click="$router.push('/skate')"
                         src="/skate.png"
-                        class="w-[50px] h-[100px] hover:w-[190px] hover:h-[220px]"
+                        class="w-[150px] h-[200px] hover:w-[190px] hover:h-[220px]"
                         alt=""
                     />
                     <img

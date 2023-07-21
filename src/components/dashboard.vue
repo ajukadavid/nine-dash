@@ -85,7 +85,7 @@
 </script>
 
 <template>
- <!-- <div class="flex items-center justify-center h-screen overflow-hidden bg-black">
+ <div class="flex items-center justify-center h-screen overflow-hidden bg-black">
 
     <div class="w-full justify-center flex bg-black items-center mb-[90px] overflow-hidden">
       <div class="img-wrapper flex flex-col justify-center items-center">
@@ -121,8 +121,8 @@
         </div>
       </div>
     </div>
-  </div> -->
-  <div class="flex flex-col m-0 w-full items-center justify-center bg-black  h-screen">
+  </div> 
+  <!-- <div class="flex flex-col m-0 w-full items-center justify-center bg-black  h-screen">
     <div class="flex h-fit w-fit items-center justify-center">
       <img src="/mail.gif" class="w-full h-full" />
 
@@ -131,7 +131,7 @@
                 <span>></span>
                 <span >press start</span>
             </div>
-    </div>
+    </div> -->
 </template>
 
 

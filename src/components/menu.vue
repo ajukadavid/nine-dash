@@ -5,8 +5,8 @@ const $router = useRouter();
 </script>
 
 <template>
-    <div class="flex justify-center bg-black h-screen pb-40">
-        <div class="flex-col  flex items-center h-screen bg-black">
+    <div class="flex justify-center bg-black h-screen px-16 pb-5">
+        <div class="flex-col  flex items-center h-screen bg-black mb-10">
             <img src="/updated.gif" class="h-[400px] mt-10" />
 
             <div 

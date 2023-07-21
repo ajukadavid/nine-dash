@@ -8,7 +8,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="text-red-900 w-full h-screen bg-black flex  items-center justify-center">
+    <div class="text-red-700 w-full h-screen bg-black flex  items-center justify-center">
         loading...
     </div>
 

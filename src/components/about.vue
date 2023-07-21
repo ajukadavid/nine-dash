@@ -7,7 +7,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="flex flex-col h-screen items-center justify-center">
+    <div class="flex bg-black text-red-700 flex-col h-screen items-center justify-center">
         <span>Coming soon...</span>
     </div>
 </template>

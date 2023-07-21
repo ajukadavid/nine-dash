@@ -16,7 +16,7 @@ const $router = useRouter();
                     <img
                         @click="$router.push('/skate')"
                         src="/skate.png"
-                        class="w-[150px] h-[200px] hover:w-[190px] hover:h-[220px]"
+                        class="w-[50px] h-[100px] hover:w-[190px] hover:h-[220px]"
                         alt=""
                     />
                     <img
@@ -57,19 +57,19 @@ const $router = useRouter();
                     <img
                         @click="$router.push('/skate')"
                         src="/skate.png"
-                        class="w-[150px] h-[200px] hover:w-[190px] hover:h-[220px]"
+                        class="w-[100px] h-[100px]"
                         alt=""
                     />
                     <img
                         @click="$router.push('/shop')"
                         src="/shop.png"
-                        class="w-[150px] h-[200px]"
+                        class="w-[100px] h-[100px]"
                         alt=""
                     />
                     <img
                         @click="$router.push('/music')"
                         src="/music.png"
-                        class="w-[150px] h-[200px]"
+                         class="w-[100px] h-[100px]"
                         alt=""
                     />
          
@@ -79,19 +79,19 @@ const $router = useRouter();
                     <img
                         @click="$router.push('/contact')"
                         src="/contact.png"
-                        class="w-[150px] h-[200px]"
+                        class="w-[100px] h-[100px]"
                         alt=""
                     />
                     <img
                         @click="$router.push('/subscribe')"
                         src="/subscribe.png"
-                        class="w-[150px] h-[200px]"
+                        class="w-[100px] h-[100px]"
                         alt=""
                     />
                     <img
                         @click="$router.push('/about')"
                         src="/about.png"
-                        class="w-[150px] h-[200px]"
+                        class="w-[100px] h-[100px]"
                         alt=""
                     />
                 </div> 

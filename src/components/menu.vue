@@ -16,7 +16,7 @@ const $router = useRouter();
                     <img
                         @click="$router.push('/skate')"
                         src="/skate.png"
-                        class="w-[50px] h-[100px] hover:w-[190px] hover:h-[220px]"
+                        class="w-[150px] h-[200px] hover:w-[190px] hover:h-[220px]"
                         alt=""
                     />
                     <img

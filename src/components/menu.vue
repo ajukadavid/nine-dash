@@ -1,20 +1,44 @@
+<script lang="ts" setup>
+import { useRouter } from "vue-router";
+
+const $router = useRouter();
+</script>
 
 <template>
-    <div class="flex justify-center bg-black h-screen pb-40">
-        <div class="flex-col h-screen bg-black">
-            <img src="/updated.gif" class="h-[400px]" />
-            <div class="flex-col items-center justify-center w-full bg-black px-36">
-                <div class="flex  items-center justify-center">
-                    <img src="/skate.png" class="w-[150px] h-[200px]" alt="">
-                    <img src="/shop.png" class="w-[150px] h-[200px]" alt="">
-                    <img src="/music.png" class="w-[150px] h-[200px]" alt="">
+    <div class="flex justify-center bg-black h-screen px-16 pb-5">
+        <div class="flex-col  flex items-center h-screen bg-black pb-32 lg:pb-10">
+            <img src="/updated.gif" class="h-[400px] mt-10" />
+
+            <div class="flex-col lg:flex hidden items-center justify-center w-fit bg-black px-36">
+                <div class="flex items-center cursor-pointer justify-center">
+                    <img @click="$router.push('/skate')" src="/skate.png" class="w-[150px] h-[200px] hover:scale-110"
+                        alt="" />
+                    <img @click="$router.push('/shop')" src="/shop.png" class="w-[150px] h-[200px] hover:scale-110"
+                        alt="" />
+                    <img @click="$router.push('/music')" src="/music.png" class="w-[150px] h-[200px] hover:scale-110"
+                        alt="" />
+                    <img @click="$router.push('/contact')" src="/contact.png" class="w-[150px] h-[200px] hover:scale-110"
+                        alt="" />
+                    <img @click="$router.push('/subscribe')" src="/subscribe.png"
+                        class="w-[150px] h-[200px] hover:scale-110" alt="" />
+                    <img @click="$router.push('/about')" src="/about.png" class="w-[150px] h-[200px] hover:scale-110"
+                        alt="" />
                 </div>
-                <div class="flex  items-center justify-center mb-20 bg-black    ">
-                    <img src="/contact.png" class="w-[150px] h-[200px]" alt="">
-                    <img src="/subscribe.png" class="w-[150px] h-[200px]" alt="">
-                    <img src="/about.png" class="w-[150px] h-[200px]" alt="">
+
+            </div>
+            <div class="lg:hidden flex flex-col">
+                <div class="flex items-center cursor-pointer justify-center">
+                    <img @click="$router.push('/skate')" src="/skate.png" class="w-[100px] h-[150px]" alt="" />
+                    <img @click="$router.push('/shop')" src="/shop.png" class="w-[100px] h-[150px]" alt="" />
+                    <img @click="$router.push('/music')" src="/music.png" class="w-[100px] h-[150px]" alt="" />
+
+                </div>
+                <div class="flex items-center cursor-pointer justify-center">
+
+                    <img @click="$router.push('/contact')" src="/contact.png" class="w-[100px] h-[150px]" alt="" />
+                    <img @click="$router.push('/subscribe')" src="/subscribe.png" class="w-[100px] h-[150px]" alt="" />
+                    <img @click="$router.push('/about')" src="/about.png" class="w-[100px] h-[150px]" alt="" />
                 </div>
             </div>
-        </div>
     </div>
-</template>
+</div></template>

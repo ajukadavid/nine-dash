@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 // import gsap from 'gsap'
 import { makeRequest } from '../composables/email-service'
@@ -16,8 +16,6 @@ const $router = useRouter()
 
 
 const createItem = async () => {
-
-
   const colRef = collection(db, 'users')
   // data to send
   const dataObj = {
@@ -84,6 +82,10 @@ const handlePass = () => {
 }
 
 
+onMounted(async () => {
+}
+)
+
 
 </script>
 
@@ -135,4 +137,4 @@ const handlePass = () => {
 .logo {
   margin-block: 50px;
 }
-</style>
+</style> 

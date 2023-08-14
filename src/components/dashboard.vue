@@ -1,91 +1,91 @@
 <script setup lang="ts">
-// import { ref } from 'vue'
-// import { useRouter } from 'vue-router'
-// import gsap from 'gsap'
-// import { makeRequest } from '../composables/email-service'
-// import { collection, addDoc } from "firebase/firestore"
-// import db from '../composables/use-firebase'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import gsap from 'gsap'
+import { makeRequest } from '../composables/email-service'
+import { collection, addDoc } from "firebase/firestore"
+import db from '../composables/use-firebase'
 
-// const codeInput = ref<HTMLInputElement | null>(null)
-// const passcode = ref('')
-// const emailSent = ref(false)
-// const email = ref('')
-// const isWrongCode = ref(false)
-// const isEmail = ref(false)
-// const $router = useRouter()
-
-
-// const createItem = async () => {
+const codeInput = ref<HTMLInputElement | null>(null)
+const passcode = ref('')
+const emailSent = ref(false)
+const email = ref('')
+const isWrongCode = ref(false)
+const isEmail = ref(false)
+const $router = useRouter()
 
 
-//   const colRef = collection(db, 'users')
-//   // data to send
-//   const dataObj = {
-//     email: email.value
-//   }
-//   makeRequest(email.value)
-//   // create document and return reference to it
-//   const docRef = await addDoc(colRef, dataObj)
-
-//   // access auto-generated ID with '.id'
-//   console.log('Document was created with ID:', docRef.id)
-
-//   emailSent.value = true
-
-//   setTimeout(() => {
-//     emailSent.value = true
-//     email.value = ''
-//     location.reload()
-//   }, 4000);
+const createItem = async () => {
 
 
-// }
+  const colRef = collection(db, 'users')
+  // data to send
+  const dataObj = {
+    email: email.value
+  }
+  makeRequest(email.value)
+  // create document and return reference to it
+  const docRef = await addDoc(colRef, dataObj)
 
-// const handleRegisterClick = () => {
-//   if (isEmail.value) {
-//     if (!!email.value) {
-//       createItem()
-//     }
-//   } else {
-//     isEmail.value = true
-//   }
-// }
-// const handlePass = () => {
-//   if (passcode.value === '9316') {
-//     $router.push('/start')
+  // access auto-generated ID with '.id'
+  console.log('Document was created with ID:', docRef.id)
 
-//     isWrongCode.value = false
-//   } else {
-//     gsap.from(".logo", {
-//       x: -60,
-//       fill: 'blue',
-//       repeat: 3,
-//       yoyo: true,
-//       ease: "rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })",
-//       onComplete: function () {
-//         gsap.set('.logo', {
-//           x: 0
-//         })
-//       }
-//     })
-//     isWrongCode.value = true
+  emailSent.value = true
 
-//   }
+  setTimeout(() => {
+    emailSent.value = true
+    email.value = ''
+    location.reload()
+  }, 4000);
 
-//   passcode.value = ''
-//   codeInput.value?.blur()
-//   setTimeout(() => {
-//     isWrongCode.value = false
-//   }, 5000);
-//   return
-// }
+
+}
+
+const handleRegisterClick = () => {
+  if (isEmail.value) {
+    if (!!email.value) {
+      createItem()
+    }
+  } else {
+    isEmail.value = true
+  }
+}
+const handlePass = () => {
+  if (passcode.value === '9316') {
+    $router.push('/start')
+
+    isWrongCode.value = false
+  } else {
+    gsap.from(".logo", {
+      x: -60,
+      fill: 'blue',
+      repeat: 3,
+      yoyo: true,
+      ease: "rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })",
+      onComplete: function () {
+        gsap.set('.logo', {
+          x: 0
+        })
+      }
+    })
+    isWrongCode.value = true
+
+  }
+
+  passcode.value = ''
+  codeInput.value?.blur()
+  setTimeout(() => {
+    isWrongCode.value = false
+  }, 5000);
+  return
+}
 
 
 
 </script>
 
 <template>
-  <!-- <div class="flex items-center justify-center h-screen overflow-hidden bg-black">
+  <div class="flex items-center justify-center h-screen overflow-hidden bg-black">
 
     <div class="w-full justify-center flex bg-black items-center mb-[90px] overflow-hidden">
       <div class="img-wrapper flex flex-col justify-center items-center">
@@ -121,8 +121,8 @@
         </div>
       </div>
     </div>
-  </div> -->
-  <div class="flex flex-col m-0 w-full items-center justify-center bg-black  h-screen">
+  </div>
+  <!-- <div class="flex flex-col m-0 w-full items-center justify-center bg-black  h-screen">
     <div class="flex h-fit w-fit items-center justify-center">
       <img src="/mail.gif" class="w-full h-full" />
 
@@ -132,7 +132,7 @@
       <span>></span>
       <span>press start</span>
     </div>
-  </div>
+  </div> -->
 </template>
 
 

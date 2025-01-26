@@ -1,9 +1,11 @@
+import colors from 'tailwindcss/colors'
+
 /** @type {import('tailwindcss').Config} */
-
-const colors = require('tailwindcss/colors')
-
 export default {
-  content: [],
+  content: [
+    './public/**/*.html',
+    './src/**/*.{js,jsx,ts,tsx,vue}',
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -13,15 +15,8 @@ export default {
     colors: {
       ...colors,
       'purpleBg': '#2B1347'
-      
-
     }
   },
   plugins: [],
-  content: [
-    // Example content paths...
-    './public/**/*.html',
-    './src/**/*.{js,jsx,ts,tsx,vue}',
-  ],
 }
 

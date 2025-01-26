@@ -120,8 +120,11 @@ const $router = useRouter()
    </div>  -->
 
    <div class="flex flex-col m-0 w-full items-center justify-center bg-black  h-screen">
-    <div class="flex h-fit w-fit items-center justify-center">
+    <div class="flex h-fit flex-col  w-fit items-center justify-center">
       <img src="/mail.gif" class="w-full h-full" />
+      
+    </div>
+    <div class="flex flex-col items-center justify-center w-full px-6 mt-4">
 
     </div>
     <div @click="$router.push('/menu')"
@@ -142,5 +145,15 @@ const $router = useRouter()
 
 .logo {
   margin-block: 50px;
+}
+
+.logo-img {
+  transition: all 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.1) rotate(5deg);
+  filter: brightness(1.2);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
 }
 </style>

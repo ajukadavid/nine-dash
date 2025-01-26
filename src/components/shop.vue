@@ -31,7 +31,7 @@
          
             <a href="https://turndasix.company.site/" target="_blank" class="w-full sm:w-auto">
                 <div class="flex space-x-4 sm:space-x-10 justify-center items-center">
-                    <span class="text-red-500 text-lg sm:text-2xl"> > Rest of the World </span>
+                    <span class="text-red-500 text-base sm:text-2xl"> > Rest of the World </span>
                     <img src="/globe.png" class="logo-img w-12 sm:w-16 h-12 sm:h-16" />
                 </div>
             </a>

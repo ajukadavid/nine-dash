@@ -1,6 +1,6 @@
 <script setup lang="ts">
-// import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import SlotMachine from './SlotMachine.vue'
 // import gsap from 'gsap'
 // import { makeRequest } from '../composables/email-service'
 // import { collection, addDoc } from "firebase/firestore"
@@ -12,6 +12,7 @@ import { useRouter } from 'vue-router'
 // const email = ref('')
 // const isWrongCode = ref(false)
 // const isEmail = ref(false)
+
 const $router = useRouter()
 
 // const createItem = async () => {
@@ -119,18 +120,16 @@ const $router = useRouter()
     </div>
    </div>  -->
 
-   <div class="flex flex-col m-0 w-full items-center justify-center bg-black  h-screen">
-    <div class="flex h-fit flex-col  w-fit items-center justify-center">
-      <img src="/mail.gif" class="w-full h-full" />
-      
-    </div>
-    <div class="flex flex-col items-center justify-center w-full px-6 mt-4">
-
-    </div>
-    <div @click="$router.push('/menu')"
-      class="flex cursor-pointer lg:text-3xl text-base gap-3 mt-6 start-text text-red-500">
-      <span>></span>
-      <span>press start</span>
+   <div class="m-0 flex min-h-screen w-full flex-col items-center justify-center bg-black px-4 py-8">
+    <SlotMachine class=" w-full justify-center" />
+    <!-- <div class="flex h-fit w-full max-w-md flex-col items-center justify-center">
+      <img src="/mail.gif" class="h-full w-full max-h-48 object-contain" alt="" />
+    </div> -->
+    <div
+      class="start-text flex cursor-pointer gap-3 text-base text-red-500 lg:text-3xl"
+      @click="$router.push('/menu')"
+    >
+ 
     </div>
   </div>  
   

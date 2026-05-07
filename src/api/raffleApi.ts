@@ -70,16 +70,17 @@ function pickOutcome(): RafflePrize[] {
   const luckyNine = RAFFLE_PRIZES.find((p) => p.id === JACKPOT_PRIZE_ID)!
   if (Math.random() < JACKPOT_CHANCE) return [luckyNine, luckyNine, luckyNine]
 
-  const first = weightedRandom(RAFFLE_PRIZES)
-  let second: RafflePrize
-  let third: RafflePrize
+  // All three reels spin independently. Re-roll only if we accidentally hit a
+  // triple jackpot on the non-jackpot path (probability ≈ 0.2%, negligible).
+  let prizes: RafflePrize[]
   do {
-    second = weightedRandom(RAFFLE_PRIZES)
-  } while (second.id === first.id)
-  do {
-    third = weightedRandom(RAFFLE_PRIZES)
-  } while (third.id === first.id)
-  return [first, second, third]
+    prizes = [
+      weightedRandom(RAFFLE_PRIZES),
+      weightedRandom(RAFFLE_PRIZES),
+      weightedRandom(RAFFLE_PRIZES),
+    ]
+  } while (prizes.every((p) => p.id === JACKPOT_PRIZE_ID))
+  return prizes
 }
 
 /** Returns a guaranteed non-winning reel set (used when the player has already won). */

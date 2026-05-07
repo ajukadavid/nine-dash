@@ -4,6 +4,7 @@ import { useRaffleStore } from '@/stores/raffleStore'
 import { RAFFLE_PRIZES, JACKPOT_PRIZE_ID } from '@/data/rafflePrizes'
 import { RAFFLE_MOCK_MODE, STORAGE_KEY, DEV_BYPASS_STORAGE_CHECK } from '@/api/raffleApi'
 import type { RafflePrize } from '@/data/rafflePrizes'
+import { useSlotSounds } from '@/composables/use-slot-sounds'
 
 const raffleStore = useRaffleStore()
 
@@ -33,7 +34,12 @@ const resultType = ref<'win' | 'lose' | 'claimed' | 'already-won' | 'error' | 'n
 
 const remainingSpins = computed(() => raffleStore.remainingSpins)
 
-function animateReel(trackEl: HTMLElement, targetPrizeIndex: number, durationMs: number): Promise<void> {
+function animateReel(
+  trackEl: HTMLElement,
+  targetPrizeIndex: number,
+  durationMs: number,
+  reelIndex: number,
+): Promise<void> {
   return new Promise((resolve) => {
     /* Land the winning strip cell on the *middle* row of the 3-row window (not the top row). */
     const landIndex = RAFFLE_PRIZES.length * 2 + targetPrizeIndex
@@ -46,7 +52,10 @@ function animateReel(trackEl: HTMLElement, targetPrizeIndex: number, durationMs:
       requestAnimationFrame(() => {
         trackEl.style.transition = `transform ${durationMs}ms cubic-bezier(0.15, 0.85, 0.25, 1.0)`
         trackEl.style.transform = `translateY(-${landOffset}px)`
-        setTimeout(resolve, durationMs + 80)
+        setTimeout(() => {
+          reelLanded(reelIndex)
+          resolve()
+        }, durationMs + 80)
       })
     })
   })
@@ -73,14 +82,17 @@ async function handleSpin() {
     const reelResults = spinResult.prizes as RafflePrize[]
     const prizeIndices = reelResults.map((p) => RAFFLE_PRIZES.findIndex((x) => x.id === p.id))
 
+    startSpinSound()
+
     const animations = prizeIndices.map((idx, i) => {
       const duration = 1600 + i * 300
       const el = trackRefs.value[i]
       if (!el || idx < 0) return Promise.resolve()
-      return animateReel(el, idx, duration)
+      return animateReel(el, idx, duration, i)
     })
 
     await Promise.all(animations)
+    stopSpinSound()
 
     const isLuckyNineTriple = reelResults.every((p) => p.id === JACKPOT_PRIZE_ID)
 
@@ -94,11 +106,13 @@ async function handleSpin() {
       wonCode.value = spinResult.discountCode
       resultMessage.value = 'JACKPOT! Your discount code:'
       if (RAFFLE_MOCK_MODE) raffleStore.recordWin(reelResults[0]!)
+      playWin()
     } else {
       resultType.value = 'lose'
       resultMessage.value = 'No match this time — try again!'
     }
   } catch (err) {
+    stopSpinSound()
     resultType.value = 'error'
     resultMessage.value = err instanceof Error ? err.message : 'Something went wrong. Please try again.'
     console.error('[SlotMachine] Spin error:', err)
@@ -106,6 +120,8 @@ async function handleSpin() {
     isSpinning.value = false
   }
 }
+
+const { startSpinSound, reelLanded, stopSpinSound, playWin } = useSlotSounds()
 
 const compositeWrapRef = ref<HTMLElement | null>(null)
 let itemHeightObserver: ResizeObserver | null = null

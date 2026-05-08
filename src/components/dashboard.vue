@@ -131,7 +131,20 @@ const $router = useRouter()
     >
  
     </div>
-  </div>  
+  </div>
+
+  <footer class="w-full border-t border-gray-800 bg-black py-4 text-center text-[10px] tracking-widest text-gray-500">
+    <p>© 2026 V2G. ALL RIGHTS RESERVED.</p>
+    <p class="mt-1">
+      BUILT BY
+      <a
+        href="https://www.afrikoode.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-green-400 hover:text-green-300 transition-colors"
+      >AFRIKOODE</a>
+    </p>
+  </footer>
   
 </template>
 

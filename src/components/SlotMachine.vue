@@ -236,7 +236,12 @@ onUnmounted(() => {
       <span class="hint-try">Try your luck</span> —
       <span class="spin-hint-kicker hint-spin">SPIN</span>
       <span class="hint-body"> to win, or press </span>
-      <span class="spin-hint-kicker start-cta">START</span>
+      <a
+        href="https://turndasix.company.site/"
+        class="spin-hint-kicker start-cta"
+        style="text-decoration: none; cursor: pointer;"
+      >START</a>
+
       <span class="hint-body"> to go straight to the store.</span>
     </p>
 

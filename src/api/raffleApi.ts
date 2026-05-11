@@ -14,14 +14,9 @@ export const RAFFLE_API_BASE = '/api/raffle'
 
 /**
  * Chance of landing triple Lucky 9 (the ONLY winning combination).
- * Raise toward `1` for more frequent wins (e.g. `0.25` = 25% of spins).
- * Keep in sync with `JACKPOT_CHANCE` in `server/routes/raffle.js` when using the backend.
+ * Set to `0` — jackpot is disabled; every spin results in a loss.
  */
-export const JACKPOT_CHANCE = 0.08
-
-/** Single discount code with a fixed number of uses. Keep in sync with `server/routes/raffle.js`. */
-export const DISCOUNT_CODE = 'L23CKY9'
-export const DISCOUNT_CODE_MAX_USES = 9
+export const JACKPOT_CHANCE = 0
 
 /** localStorage key used to remember that this browser already won. */
 export const STORAGE_KEY = 'nine_raffle_won'
@@ -92,8 +87,6 @@ const mock = {
   _remainingSpins: 5,
   _totalUsed: 0,
   _wins: [] as unknown[],
-  /** Number of times the discount code has been awarded; capped at DISCOUNT_CODE_MAX_USES. */
-  _claimedCount: 0,
 
   async getUserSpins(): Promise<UserSpinsPayload> {
     await delay(400)
@@ -118,28 +111,12 @@ const mock = {
     this._totalUsed++
 
     const prizes = pickOutcome()
-    const isLuckyNineTriple = prizes.every((p) => p.id === JACKPOT_PRIZE_ID)
-
-    let discountCode: string | undefined
-    let allPrizesClaimed: boolean | undefined
-
-    if (isLuckyNineTriple) {
-      if (this._claimedCount < DISCOUNT_CODE_MAX_USES) {
-        discountCode = DISCOUNT_CODE
-        this._claimedCount++
-        if (!DEV_BYPASS_STORAGE_CHECK) localStorage.setItem(STORAGE_KEY, '1')
-      } else {
-        allPrizesClaimed = true
-      }
-    }
 
     return {
       prizes,
       remainingSpins: INFINITE_MOCK_SPINS ? MOCK_SPINS_DISPLAY : this._remainingSpins,
       totalSpinsUsed: this._totalUsed,
-      isWin: isLuckyNineTriple && !allPrizesClaimed,
-      discountCode,
-      allPrizesClaimed,
+      isWin: false,
     }
   },
 }

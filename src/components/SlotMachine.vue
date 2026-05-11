@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { ref, reactive, computed, onMounted, onUnmounted } from 'vue'
 import { useRaffleStore } from '@/stores/raffleStore'
-import { RAFFLE_PRIZES, JACKPOT_PRIZE_ID } from '@/data/rafflePrizes'
-import { RAFFLE_MOCK_MODE, STORAGE_KEY, DEV_BYPASS_STORAGE_CHECK } from '@/api/raffleApi'
-import type { RafflePrize } from '@/data/rafflePrizes'
+import { RAFFLE_PRIZES } from '@/data/rafflePrizes'
+import { STORAGE_KEY, DEV_BYPASS_STORAGE_CHECK } from '@/api/raffleApi'
 import { useSlotSounds } from '@/composables/use-slot-sounds'
 
 const raffleStore = useRaffleStore()
@@ -26,11 +25,9 @@ function setTrackRef(el: Element | null, i: number) {
 }
 
 const isSpinning = ref(false)
-const isWinner = ref(false)
 const hasAlreadyWon = ref(false)
 const resultMessage = ref('')
-const wonCode = ref('')
-const resultType = ref<'win' | 'lose' | 'claimed' | 'already-won' | 'error' | 'neutral'>('neutral')
+const resultType = ref<'lose' | 'already-won' | 'error' | 'neutral'>('neutral')
 
 const remainingSpins = computed(() => raffleStore.remainingSpins)
 
@@ -65,8 +62,6 @@ async function handleSpin() {
   if (isSpinning.value || remainingSpins.value === 0 || hasAlreadyWon.value) return
 
   isSpinning.value = true
-  isWinner.value = false
-  wonCode.value = ''
   resultMessage.value = ''
 
   try {
@@ -79,8 +74,7 @@ async function handleSpin() {
       return
     }
 
-    const reelResults = spinResult.prizes as RafflePrize[]
-    const prizeIndices = reelResults.map((p) => RAFFLE_PRIZES.findIndex((x) => x.id === p.id))
+    const prizeIndices = spinResult.prizes.map((p) => RAFFLE_PRIZES.findIndex((x) => x.id === p.id))
 
     startSpinSound()
 
@@ -94,23 +88,8 @@ async function handleSpin() {
     await Promise.all(animations)
     stopSpinSound()
 
-    const isLuckyNineTriple = reelResults.every((p) => p.id === JACKPOT_PRIZE_ID)
-
-    if (isLuckyNineTriple && spinResult.allPrizesClaimed) {
-      resultType.value = 'claimed'
-      resultMessage.value = 'All 9 prizes have been claimed. Better luck next time!'
-    } else if (isLuckyNineTriple && spinResult.discountCode) {
-      isWinner.value = true
-      hasAlreadyWon.value = true
-      resultType.value = 'win'
-      wonCode.value = spinResult.discountCode
-      resultMessage.value = 'JACKPOT! Your discount code:'
-      if (RAFFLE_MOCK_MODE) raffleStore.recordWin(reelResults[0]!)
-      playWin()
-    } else {
-      resultType.value = 'lose'
-      resultMessage.value = 'No match this time — try again!'
-    }
+    resultType.value = 'lose'
+    resultMessage.value = 'No match this time — try again!'
   } catch (err) {
     stopSpinSound()
     resultType.value = 'error'
@@ -121,7 +100,7 @@ async function handleSpin() {
   }
 }
 
-const { startSpinSound, reelLanded, stopSpinSound, playWin } = useSlotSounds()
+const { startSpinSound, reelLanded, stopSpinSound } = useSlotSounds()
 
 const compositeWrapRef = ref<HTMLElement | null>(null)
 let itemHeightObserver: ResizeObserver | null = null
@@ -169,7 +148,6 @@ onUnmounted(() => {
     <div
       ref="compositeWrapRef"
       class="composite-wrap relative mx-auto w-full max-w-full select-none"
-      :class="{ 'cabinet-win-shake': isWinner }"
     >
       <img
         src="/slots/cabinet.png"
@@ -250,24 +228,16 @@ onUnmounted(() => {
         <p
           class="text-xs sm:text-sm"
           :class="
-            resultType === 'win'
-              ? 'font-bold tracking-wide text-amber-300 drop-shadow-[0_0_14px_rgba(251,191,36,0.45)]'
-              : resultType === 'lose'
-                ? 'text-rose-400'
-                : resultType === 'already-won'
-                  ? 'text-sky-400'
-                  : resultType === 'error'
-                    ? 'text-red-500'
-                    : 'text-zinc-400'
+            resultType === 'lose'
+              ? 'text-rose-400'
+              : resultType === 'already-won'
+                ? 'text-sky-400'
+                : resultType === 'error'
+                  ? 'text-red-500'
+                  : 'text-zinc-400'
           "
         >
           {{ resultMessage }}
-        </p>
-        <p
-          v-if="wonCode"
-          class="mt-1 font-mono text-sm font-bold tracking-widest text-amber-200 drop-shadow-[0_0_10px_rgba(251,191,36,0.6)] sm:text-base"
-        >
-          {{ wonCode }}
         </p>
       </div>
     </transition>
